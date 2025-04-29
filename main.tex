@@ -8,7 +8,16 @@
 % This is a simple template for a LaTeX document using the "article" class.
 % See "book", "report", "letter" for other types of document.
 
-\documentclass[11pt]{book} % use larger type; default would be 10pt
+%\documentclass[11pt]{book} % use larger type; default would be 10pt
+\documentclass[
+  a4paper,	      % DIN A4
+	11pt,           % Globale Schriftgröße
+  parskip=half*,  % Nach Absatz kein Einrücken
+]{scrbook}
+
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.15} % Zeilenabstand: 1.15
+\setkomafont{section}{\fontsize{13bp}{18.8bp}\selectfont\bfseries}
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
@@ -17,10 +26,11 @@
 % See the LaTeX Companion or other references for full information.
 
 %%% PAGE DIMENSIONS
-\usepackage{geometry} % to change the page dimensions 
+%\usepackage{geometry} % to change the page dimensions 
+\usepackage[left=30mm,right=30mm,top=30mm,bottom=30mm]{geometry}
 
 % for paper
-\geometry{letterpaper, margin=1in}
+%\geometry{letterpaper, margin=1in}
 
 % for "boxed paper"
 %\geometry{letterpaper,showframe,showcrop, margin=1in}
@@ -47,6 +57,37 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{caption} % needed for making listing a figure when breaking across multiple pages
+
+\usepackage[
+    format=plain, 
+    justification=raggedright,
+    singlelinecheck=false
+]{caption}
+
+\captionsetup[table]{
+	position = top,															% Tabellenbeschriftung: bottom/top	
+	singlelinecheck = true,
+	font = {stretch=1.2, small},								% kleine Schriftgröße, 120% Zeilenabstand
+  labelfont = {small, bf, sf},  							% kleine Schriftgröße, normale Schrift
+  labelsep = colon														% colon, period, space, quad, newline
+}
+
+\captionsetup[figure]{
+	position = bottom,													% Abbildungsbeschriftung: bottom/top
+	singlelinecheck = true,
+	font = {stretch=1.2, small},
+  labelfont = {small, bf, sf},
+	labelsep = colon 														% colon, period, space, quad, newline
+}
+
+\usepackage{fourier}				                      % global standard font
+%\usepackage{libertine}
+%\usepackage{libertinust1math}
+%\usepackage[scaled=.9]{helvet}                   % header font
+\usepackage[scaled=0.95,defaultsans]{opensans}   % Schrift für Überschriften
+\usepackage[scaled]{inconsolata}                 % source code font
+
+
 % Code listings
 \usepackage[formats]{listings}
 \usepackage{tikz}
@@ -112,8 +153,8 @@ identifierstyle=\sffamily}
 \setlength{\headheight}{14pt}
 
 %%% SECTION TITLE APPEARANCE
-\usepackage{sectsty}
-\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
 %%% ToC (table of contents) APPEARANCE
@@ -125,7 +166,10 @@ identifierstyle=\sffamily}
 %%% END Article customizations
 
 %%% The "real" document content comes below...
-\usepackage{url}
+%\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
 \usepackage{framed,color}
 \usepackage{import}
 \usepackage{todonotes}
